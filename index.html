@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maaz Khan — Shopify &amp; WordPress Developer | SEO Specialist</title>
+<meta name="description" content="Maaz Khan — Shopify &amp; WordPress Developer and Technical &amp; On-Page SEO Specialist. 3+ years building and optimizing custom online stores and websites.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root{
+        --navy:#1C222C;
+        --navy-2:#242C39;
+        --navy-3:#161B23;
+        --navy-4:#10151C;
+        --amber:#FFBD59;
+        --amber-dark:#EFA636;
+        --ink:#20262E;
+        --muted:#7C8592;
+        --muted-light:#A7B0BD;
+        --side-text:#CFD6E0;
+        --light:#F5F6F8;
+        --white:#FFFFFF;
+        --line:#E7E9EE;
+        --line-dark:#333C4B;
+        --shadow:0 18px 50px -20px rgba(16,21,28,.35);
+        --shadow-sm:0 8px 24px -12px rgba(16,21,28,.25);
+        --maxw:1180px;
+        --disp:'Space Grotesk',system-ui,sans-serif;
+        --body:'Poppins',system-ui,sans-serif;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+        font-family:var(--body);
+        color:var(--ink);
+        background:var(--navy);
+        line-height:1.65;
+        -webkit-font-smoothing:antialiased;
+        overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    ul{list-style:none}
+
+    :focus-visible{
+        outline:3px solid var(--amber);
+        outline-offset:3px;
+        border-radius:4px;
+    }
+
+    .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+    /* ---------- Reusable eyebrow / heading ---------- */
+    .eyebrow{
+        font-family:var(--disp);
+        font-size:.72rem;
+        letter-spacing:.28em;
+        text-transform:uppercase;
+        font-weight:600;
+        color:var(--amber-dark);
+        display:inline-flex;
+        align-items:center;
+        gap:.6rem;
+        margin-bottom:1.1rem;
+    }
+    .eyebrow::before{
+        content:"";
+        width:26px;height:2px;
+        background:var(--amber);
+        display:inline-block;
+    }
+    .eyebrow.on-dark{color:var(--amber)}
+
+    .sec-title{
+        font-family:var(--disp);
+        font-weight:700;
+        font-size:clamp(1.9rem,4vw,2.7rem);
+        line-height:1.08;
+        letter-spacing:-.5px;
+        color:var(--ink);
+    }
+    .sec-title.on-dark{color:var(--white)}
+    .sec-title .amber{color:var(--amber-dark)}
+    .sec-title.on-dark .amber{color:var(--amber)}
+
+    .sec-lead{
+        margin-top:1rem;
+        max-width:620px;
+        color:var(--muted);
+        font-size:1.02rem;
+    }
+    .sec-lead.on-dark{color:var(--side-text)}
+
+    section{scroll-margin-top:84px}
+
+    /* ---------- NAV ---------- */
+    .nav{
+        position:fixed;top:0;left:0;right:0;z-index:100;
+        transition:background .35s ease, box-shadow .35s ease, padding .35s ease;
+        padding:22px 0;
+    }
+    .nav.scrolled{
+        background:rgba(22,27,35,.86);
+        backdrop-filter:blur(12px);
+        -webkit-backdrop-filter:blur(12px);
+        box-shadow:0 1px 0 rgba(255,255,255,.06), 0 10px 30px -18px rgba(0,0,0,.6);
+        padding:14px 0;
+    }
+    .nav-inner{display:flex;align-items:center;justify-content:space-between}
+    .brand{
+        font-family:var(--disp);
+        font-weight:700;
+        font-size:1.15rem;
+        color:var(--white);
+        letter-spacing:.5px;
+        display:flex;align-items:center;gap:.55rem;
+    }
+    .brand .dot{
+        width:12px;height:12px;background:var(--amber);
+        transform:rotate(45deg);display:inline-block;flex:none;
+    }
+    .brand span{color:var(--amber)}
+    .nav-links{display:flex;align-items:center;gap:2rem}
+    .nav-links a{
+        font-size:.9rem;font-weight:500;color:var(--side-text);
+        position:relative;transition:color .2s;
+    }
+    .nav-links a::after{
+        content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;
+        background:var(--amber);transition:width .25s ease;
+    }
+    .nav-links a:hover,.nav-links a.active{color:var(--white)}
+    .nav-links a:hover::after,.nav-links a.active::after{width:100%}
+    .nav-cta{
+        font-family:var(--body);
+        font-weight:600;font-size:.86rem;
+        background:var(--amber);color:var(--navy);
+        padding:.6rem 1.25rem;border-radius:100px;
+        transition:transform .2s ease, box-shadow .2s ease;
+        display:inline-flex;align-items:center;gap:.4rem;
+    }
+    .nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 22px -8px rgba(255,189,89,.6)}
+    .nav-toggle{
+        display:none;background:none;border:1px solid var(--line-dark);
+        width:44px;height:44px;border-radius:10px;cursor:pointer;
+        flex-direction:column;justify-content:center;align-items:center;gap:5px;
+    }
+    .nav-toggle span{width:20px;height:2px;background:var(--white);transition:.25s;display:block}
+    .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+    .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+    /* ---------- HERO ---------- */
+    .hero{
+        position:relative;
+        background:
+            radial-gradient(1100px 520px at 82% -10%, rgba(255,189,89,.10), transparent 60%),
+            linear-gradient(160deg, var(--navy-2) 0%, var(--navy) 46%, var(--navy-3) 100%);
+        padding:190px 0 120px;
+        overflow:hidden;
+    }
+    /* angular corner accent (echoes resume) */
+    .hero::before{
+        content:"";position:absolute;top:0;left:0;
+        width:190px;height:190px;
+        background:linear-gradient(135deg,var(--amber) 0%, var(--amber-dark) 100%);
+        clip-path:polygon(0 0, 100% 0, 0 100%);
+        opacity:.92;
+    }
+    .hero::after{
+        content:"";position:absolute;top:38px;left:0;
+        width:120px;height:120px;
+        background:var(--navy);
+        clip-path:polygon(0 0, 100% 0, 0 100%);
+    }
+    .hero-grid{
+        position:relative;z-index:2;
+        display:grid;grid-template-columns:1.25fr .9fr;
+        gap:56px;align-items:center;
+    }
+    .hero-eyebrow{
+        font-family:var(--disp);font-size:.78rem;letter-spacing:.3em;
+        text-transform:uppercase;color:var(--amber);font-weight:600;
+        display:inline-flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;
+    }
+    .hero-eyebrow::before{content:"";width:34px;height:2px;background:var(--amber)}
+    .hero h1{
+        font-family:var(--disp);
+        font-weight:700;
+        font-size:clamp(2.9rem,6.4vw,4.9rem);
+        line-height:1.02;
+        letter-spacing:-1.5px;
+        color:var(--white);
+        text-transform:uppercase;
+    }
+    .hero h1 .amber{color:var(--amber)}
+    .hero .role{
+        margin-top:1.3rem;
+        display:flex;flex-wrap:wrap;align-items:center;gap:.55rem .8rem;
+        font-family:var(--disp);
+        font-weight:500;font-size:clamp(.95rem,1.9vw,1.18rem);
+        color:var(--side-text);
+    }
+    .hero .role .sep{width:6px;height:6px;background:var(--amber);transform:rotate(45deg);display:inline-block}
+    .hero p.blurb{
+        margin-top:1.5rem;max-width:520px;
+        color:var(--muted-light);font-size:1.03rem;
+    }
+    .hero-cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2.2rem}
+    .btn{
+        display:inline-flex;align-items:center;gap:.55rem;
+        font-weight:600;font-size:.95rem;
+        padding:.85rem 1.5rem;border-radius:100px;
+        transition:transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+        cursor:pointer;border:none;font-family:var(--body);
+    }
+    .btn svg{width:18px;height:18px}
+    .btn-primary{background:var(--amber);color:var(--navy)}
+    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 30px -12px rgba(255,189,89,.65)}
+    .btn-ghost{background:transparent;color:var(--white);border:1.5px solid var(--line-dark)}
+    .btn-ghost:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-3px)}
+
+    /* photo frame */
+    .hero-photo{position:relative;justify-self:center;width:min(330px,80vw)}
+    .hero-photo .accent{
+        position:absolute;inset:22px -22px -22px 22px;
+        background:linear-gradient(150deg,var(--amber) 0%,var(--amber-dark) 100%);
+        clip-path:polygon(0 8%, 8% 0, 100% 0, 100% 92%, 92% 100%, 0 100%);
+        z-index:1;
+    }
+    .hero-photo .frame{
+        position:relative;z-index:2;
+        clip-path:polygon(0 8%, 8% 0, 100% 0, 100% 92%, 92% 100%, 0 100%);
+        background:var(--navy-3);
+        border:0;
+        overflow:hidden;
+    }
+    .hero-photo .frame img{width:100%;height:100%;object-fit:cover;aspect-ratio:410/500;object-position:center top}
+    .hero-photo .badge{
+        position:absolute;z-index:3;left:-16px;bottom:24px;
+        background:var(--white);color:var(--navy);
+        padding:.55rem .9rem;border-radius:10px;
+        box-shadow:var(--shadow-sm);
+        font-family:var(--disp);font-weight:600;font-size:.8rem;
+        display:flex;align-items:center;gap:.5rem;
+    }
+    .hero-photo .badge b{font-size:1.15rem;color:var(--amber-dark)}
+
+    /* floating deco shapes */
+    .float{position:absolute;z-index:1;pointer-events:none}
+    .float.a{width:14px;height:14px;background:var(--amber);transform:rotate(45deg);top:26%;left:44%;opacity:.7}
+    .float.b{width:80px;height:80px;border:2px solid var(--line-dark);border-radius:50%;bottom:16%;left:6%;opacity:.6}
+    .float.c{width:9px;height:9px;background:var(--amber-dark);border-radius:50%;top:70%;right:30%;opacity:.7}
+
+    /* ---------- MARQUEE ---------- */
+    .marquee{
+        background:linear-gradient(90deg,var(--amber) 0%, var(--amber-dark) 100%);
+        overflow:hidden;white-space:nowrap;
+        padding:16px 0;position:relative;
+    }
+    .marquee-track{display:inline-flex;align-items:center;animation:scroll-x 26s linear infinite}
+    .marquee-track span{
+        font-family:var(--disp);font-weight:600;font-size:1rem;
+        text-transform:uppercase;letter-spacing:.12em;color:var(--navy);
+        padding:0 1.4rem;display:inline-flex;align-items:center;gap:1.4rem;
+    }
+    .marquee-track span::after{content:"◆";font-size:.7rem;color:var(--navy);opacity:.55}
+    @keyframes scroll-x{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* ---------- ABOUT + STATS ---------- */
+    .about{background:var(--navy-2);padding:110px 0;position:relative}
+    .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+    .about-text p{color:var(--side-text);font-size:1.05rem;margin-top:1.1rem}
+    .about-text p .hl{color:var(--white);font-weight:600}
+    .stats{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .stat{
+        background:linear-gradient(150deg,var(--navy-3),var(--navy-4));
+        border:1px solid var(--line-dark);
+        padding:26px 22px;position:relative;
+        clip-path:polygon(0 0, 100% 0, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+    }
+    .stat::before{content:"";position:absolute;top:0;left:0;width:4px;height:38px;background:var(--amber)}
+    .stat .num{font-family:var(--disp);font-weight:700;font-size:2.5rem;color:var(--amber);line-height:1}
+    .stat .lbl{color:var(--muted-light);font-size:.86rem;margin-top:.5rem;font-weight:500}
+
+    /* ---------- SKILLS ---------- */
+    .skills{background:var(--light);padding:110px 0}
+    .skills-head{text-align:center;max-width:640px;margin:0 auto 3.4rem}
+    .skills-head .eyebrow{justify-content:center}
+    .skills-head .sec-lead{margin-left:auto;margin-right:auto}
+    .skill-cats{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .skill-card{
+        background:var(--white);border:1px solid var(--line);
+        border-radius:14px;padding:28px 26px;
+        box-shadow:var(--shadow-sm);
+        transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .skill-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+    .skill-card h3{
+        font-family:var(--disp);font-size:1.12rem;font-weight:600;color:var(--ink);
+        display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem;
+    }
+    .skill-card h3 .ic{
+        width:38px;height:38px;flex:none;border-radius:9px;
+        background:linear-gradient(150deg,var(--amber),var(--amber-dark));
+        display:grid;place-items:center;color:var(--navy);
+    }
+    .skill-card h3 .ic svg{width:20px;height:20px}
+    .chips{display:flex;flex-wrap:wrap;gap:.5rem}
+    .chip{
+        font-size:.82rem;font-weight:500;color:var(--ink);
+        background:var(--light);border:1px solid var(--line);
+        padding:.4rem .8rem;border-radius:100px;
+        transition:background .2s, color .2s, border-color .2s;
+    }
+    .skill-card:hover .chip{border-color:#dfe3ea}
+    .chip:hover{background:var(--navy);color:var(--white);border-color:var(--navy)}
+
+    /* ---------- EXPERIENCE ---------- */
+    .exp{background:var(--white);padding:110px 0}
+    .exp-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+    .exp-head{position:sticky;top:110px}
+    .timeline{position:relative;padding-left:34px}
+    .timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+    .tl-item{position:relative;padding-bottom:38px}
+    .tl-item:last-child{padding-bottom:0}
+    .tl-item::before{
+        content:"";position:absolute;left:-34px;top:4px;
+        width:16px;height:16px;background:var(--amber);
+        transform:rotate(45deg);border:3px solid var(--white);
+        box-shadow:0 0 0 2px var(--amber);
+    }
+    .tl-role{font-family:var(--disp);font-weight:600;font-size:1.2rem;color:var(--ink)}
+    .tl-company{
+        display:inline-flex;align-items:center;gap:.35rem;
+        color:var(--amber-dark);font-weight:600;font-size:.95rem;margin-top:.15rem;
+        transition:color .2s;
+    }
+    .tl-company:hover{color:var(--ink)}
+    .tl-company svg{width:14px;height:14px;transition:transform .2s}
+    .tl-company:hover svg{transform:translate(2px,-2px)}
+    .tl-list{margin-top:.9rem}
+    .tl-list li{
+        position:relative;padding-left:1.3rem;color:var(--muted);
+        font-size:.94rem;margin-bottom:.4rem;
+    }
+    .tl-list li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;background:var(--amber);transform:rotate(45deg)}
+
+    /* ---------- PROJECTS ---------- */
+    .projects{
+        background:
+            radial-gradient(900px 400px at 90% 0%, rgba(255,189,89,.08), transparent 60%),
+            linear-gradient(180deg,var(--navy) 0%, var(--navy-3) 100%);
+        padding:110px 0;position:relative;overflow:hidden;
+    }
+    .proj-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:2.6rem}
+    .filters{display:flex;gap:.55rem;flex-wrap:wrap}
+    .filter-btn{
+        font-family:var(--body);font-weight:500;font-size:.85rem;
+        color:var(--side-text);background:transparent;
+        border:1.5px solid var(--line-dark);border-radius:100px;
+        padding:.5rem 1.1rem;cursor:pointer;transition:.2s;
+    }
+    .filter-btn:hover{border-color:var(--amber);color:var(--white)}
+    .filter-btn.active{background:var(--amber);color:var(--navy);border-color:var(--amber)}
+    .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .proj-card{
+        position:relative;background:var(--navy-2);
+        border:1px solid var(--line-dark);border-radius:16px;
+        padding:26px;overflow:hidden;
+        transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+        display:flex;flex-direction:column;
+    }
+    .proj-card::after{
+        content:"";position:absolute;right:-40px;bottom:-40px;
+        width:120px;height:120px;background:var(--amber);opacity:.05;
+        transform:rotate(45deg);transition:opacity .3s;
+    }
+    .proj-card:hover{transform:translateY(-8px);border-color:var(--amber);box-shadow:0 26px 50px -24px rgba(0,0,0,.7)}
+    .proj-card:hover::after{opacity:.12}
+    .proj-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.3rem}
+    .proj-mono{
+        width:52px;height:52px;flex:none;
+        background:linear-gradient(150deg,var(--amber),var(--amber-dark));
+        clip-path:polygon(0 12%,12% 0,100% 0,100% 88%,88% 100%,0 100%);
+        display:grid;place-items:center;
+        font-family:var(--disp);font-weight:700;font-size:1.4rem;color:var(--navy);
+    }
+    .tag{
+        font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;
+        padding:.32rem .7rem;border-radius:100px;
+    }
+    .tag.wp{background:rgba(255,189,89,.14);color:var(--amber);border:1px solid rgba(255,189,89,.3)}
+    .tag.shopify{background:rgba(159,209,140,.12);color:#9FD18C;border:1px solid rgba(159,209,140,.28)}
+    .proj-card h3{font-family:var(--disp);font-weight:600;font-size:1.28rem;color:var(--white);position:relative;z-index:2}
+    .proj-card .url{color:var(--muted-light);font-size:.82rem;margin-top:.2rem;position:relative;z-index:2}
+    .proj-card p{color:var(--side-text);font-size:.92rem;margin-top:.9rem;flex:1;position:relative;z-index:2}
+    .proj-link{
+        margin-top:1.4rem;display:inline-flex;align-items:center;gap:.45rem;
+        font-family:var(--disp);font-weight:600;font-size:.88rem;color:var(--amber);
+        position:relative;z-index:2;transition:gap .2s;align-self:flex-start;
+    }
+    .proj-link:hover{gap:.8rem}
+    .proj-link svg{width:15px;height:15px}
+
+    /* ---------- SERVICES + EDUCATION ---------- */
+    .services{background:var(--light);padding:110px 0}
+    .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:2.8rem}
+    .svc{
+        background:var(--white);border:1px solid var(--line);border-radius:14px;
+        padding:26px 22px;transition:transform .25s, box-shadow .25s;
+    }
+    .svc:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+    .svc .ic{
+        width:44px;height:44px;border-radius:11px;margin-bottom:1rem;
+        background:var(--navy);display:grid;place-items:center;color:var(--amber);
+        transition:background .25s;
+    }
+    .svc:hover .ic{background:var(--amber);color:var(--navy)}
+    .svc .ic svg{width:22px;height:22px}
+    .svc h4{font-family:var(--disp);font-weight:600;font-size:1.02rem;color:var(--ink);line-height:1.3}
+
+    .edu-row{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+    .edu-card{
+        background:linear-gradient(150deg,var(--navy-2),var(--navy-3));
+        border-radius:16px;padding:34px;color:var(--white);
+        display:flex;align-items:center;gap:22px;position:relative;overflow:hidden;
+    }
+    .edu-card::before{content:"";position:absolute;top:0;right:0;width:90px;height:90px;background:var(--amber);opacity:.08;clip-path:polygon(100% 0,0 0,100% 100%)}
+    .edu-ic{
+        width:60px;height:60px;flex:none;border-radius:14px;
+        background:linear-gradient(150deg,var(--amber),var(--amber-dark));
+        display:grid;place-items:center;color:var(--navy);
+    }
+    .edu-ic svg{width:30px;height:30px}
+    .edu-card h4{font-family:var(--disp);font-weight:600;font-size:1.18rem}
+    .edu-card .school{color:var(--side-text);font-size:.92rem;margin-top:.15rem}
+    .edu-tag{display:inline-block;margin-top:.6rem;font-size:.72rem;font-weight:600;color:var(--amber);background:rgba(255,189,89,.12);border:1px solid rgba(255,189,89,.3);padding:.28rem .7rem;border-radius:100px}
+    .lang-card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:34px}
+    .lang-card h4{font-family:var(--disp);font-weight:600;font-size:1.05rem;color:var(--ink);margin-bottom:1.3rem;display:flex;align-items:center;gap:.6rem}
+    .lang-card h4 .d{width:9px;height:9px;background:var(--amber);transform:rotate(45deg)}
+    .lang-row{margin-bottom:1rem}
+    .lang-row:last-child{margin-bottom:0}
+    .lang-row .top{display:flex;justify-content:space-between;font-size:.88rem;margin-bottom:.4rem}
+    .lang-row .top .pct{color:var(--muted);font-weight:500}
+    .bar{height:7px;background:var(--line);border-radius:100px;overflow:hidden}
+    .bar span{display:block;height:100%;background:linear-gradient(90deg,var(--amber),var(--amber-dark));border-radius:100px;width:0;transition:width 1.1s cubic-bezier(.16,1,.3,1)}
+
+    /* ---------- CONTACT ---------- */
+    .contact{
+        background:
+            radial-gradient(700px 340px at 15% 120%, rgba(255,189,89,.12), transparent 60%),
+            linear-gradient(160deg,var(--navy-3),var(--navy-4));
+        padding:120px 0;position:relative;overflow:hidden;
+    }
+    .contact::before{content:"";position:absolute;top:0;right:0;width:200px;height:200px;background:var(--amber);opacity:.9;clip-path:polygon(100% 0,0 0,100% 100%)}
+    .contact::after{content:"";position:absolute;top:0;right:0;width:130px;height:130px;background:var(--navy-3);clip-path:polygon(100% 0,26% 0,100% 74%)}
+    .contact-inner{position:relative;z-index:2;text-align:center;max-width:720px;margin:0 auto}
+    .contact h2{
+        font-family:var(--disp);font-weight:700;color:var(--white);
+        font-size:clamp(2rem,5vw,3.2rem);line-height:1.08;letter-spacing:-.5px;
+    }
+    .contact h2 .amber{color:var(--amber)}
+    .contact p{color:var(--side-text);font-size:1.08rem;margin-top:1.2rem}
+    .contact-cta{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-top:2.4rem}
+    .contact-meta{display:flex;flex-wrap:wrap;gap:1.6rem 2.4rem;justify-content:center;margin-top:2.8rem;padding-top:2.4rem;border-top:1px solid var(--line-dark)}
+    .cm{display:flex;align-items:center;gap:.6rem;color:var(--side-text);font-size:.92rem}
+    .cm svg{width:18px;height:18px;color:var(--amber);flex:none}
+    .cm a:hover{color:var(--amber)}
+
+    /* ---------- FOOTER ---------- */
+    footer{background:var(--navy-4);padding:34px 0;border-top:1px solid var(--line-dark)}
+    .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+    .foot-brand{font-family:var(--disp);font-weight:700;color:var(--white);display:flex;align-items:center;gap:.5rem}
+    .foot-brand .dot{width:10px;height:10px;background:var(--amber);transform:rotate(45deg)}
+    .foot-inner p{color:var(--muted);font-size:.85rem}
+    .foot-social{display:flex;gap:.7rem}
+    .foot-social a{
+        width:38px;height:38px;border-radius:10px;border:1px solid var(--line-dark);
+        display:grid;place-items:center;color:var(--side-text);transition:.2s;
+    }
+    .foot-social a:hover{background:var(--amber);color:var(--navy);border-color:var(--amber);transform:translateY(-3px)}
+    .foot-social svg{width:18px;height:18px}
+
+    /* ---------- REVEAL ANIM ---------- */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s cubic-bezier(.16,1,.3,1)}
+    .reveal.in{opacity:1;transform:none}
+    .reveal.d1{transition-delay:.08s}
+    .reveal.d2{transition-delay:.16s}
+    .reveal.d3{transition-delay:.24s}
+    .reveal.d4{transition-delay:.32s}
+
+    /* ---------- RESPONSIVE ---------- */
+    @media(max-width:960px){
+        .hero-grid{grid-template-columns:1fr;gap:44px}
+        .hero-photo{order:-1;justify-self:start}
+        .about-grid{grid-template-columns:1fr;gap:38px}
+        .exp-grid{grid-template-columns:1fr;gap:34px}
+        .exp-head{position:static}
+        .skill-cats{grid-template-columns:1fr 1fr}
+        .proj-grid{grid-template-columns:1fr 1fr}
+        .svc-grid{grid-template-columns:1fr 1fr}
+        .edu-row{grid-template-columns:1fr}
+    }
+    @media(max-width:680px){
+        .wrap{padding:0 20px}
+        .nav-links{
+            position:fixed;inset:0 0 auto 0;top:0;
+            flex-direction:column;align-items:flex-start;gap:0;
+            background:rgba(16,21,28,.98);backdrop-filter:blur(14px);
+            padding:96px 28px 32px;
+            transform:translateY(-100%);transition:transform .35s ease;
+            height:auto;box-shadow:0 20px 40px -20px rgba(0,0,0,.8);
+        }
+        .nav-links.open{transform:translateY(0)}
+        .nav-links a{width:100%;padding:14px 0;border-bottom:1px solid var(--line-dark);font-size:1rem}
+        .nav-links a::after{display:none}
+        .nav-links .nav-cta{margin-top:16px;justify-content:center;width:100%}
+        .nav-toggle{display:flex}
+        .hero{padding:150px 0 90px}
+        .about,.skills,.exp,.projects,.services,.contact{padding:80px 0}
+        .skill-cats{grid-template-columns:1fr}
+        .proj-grid{grid-template-columns:1fr}
+        .svc-grid{grid-template-columns:1fr 1fr}
+        .stats{grid-template-columns:1fr 1fr}
+        .proj-head{flex-direction:column;align-items:flex-start}
+        .foot-inner{flex-direction:column;text-align:center}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+        *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+        .reveal{opacity:1;transform:none}
+        .marquee-track{animation:none}
+        .bar span{transition:none}
+    }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+    <div class="wrap nav-inner">
+        <a href="#top" class="brand" aria-label="Maaz Khan home"><span class="dot"></span>Maaz<span>&nbsp;Khan</span></a>
+        <nav class="nav-links" id="navLinks" aria-label="Primary">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#services">Services</a>
+            <a class="nav-cta" href="https://wa.me/923262122420" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.478-1.115zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.166-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                Hire Me
+            </a>
+        </nav>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- HERO -->
+<main id="top">
+<section class="hero">
+    <span class="float a"></span><span class="float b"></span><span class="float c"></span>
+    <div class="wrap hero-grid">
+        <div class="hero-copy">
+            <span class="hero-eyebrow">Shopify · WordPress · SEO</span>
+            <h1>Maaz <span class="amber">Khan</span></h1>
+            <div class="role">
+                <span>Shopify &amp; WordPress Developer</span>
+                <span class="sep"></span>
+                <span>Technical &amp; On-Page SEO Specialist</span>
+            </div>
+            <p class="blurb">I build and optimize custom online stores and websites — fast, search-friendly, and built to convert. 3+ years turning ideas into live, high-performing e-commerce sites.</p>
+            <div class="hero-cta">
+                <a class="btn btn-primary" href="https://wa.me/923262122420" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.478-1.115zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.166-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    Chat on WhatsApp
+                </a>
+                <a class="btn btn-ghost" href="#projects">View My Work</a>
+            </div>
+        </div>
+        <div class="hero-photo">
+            <div class="accent"></div>
+            <div class="frame"><img src="profile-image.jpg" alt="Maaz Khan, Shopify and WordPress developer"></div>
+            <div class="badge"><b>3+</b> Years<br>Experience</div>
+        </div>
+    </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+        <span>Shopify Development</span><span>WordPress Websites</span><span>On-Page SEO</span><span>Technical SEO</span><span>WooCommerce</span><span>....</span><span>Liquid</span><span>Core Web Vitals</span>
+        <span>Shopify Development</span><span>WordPress Websites</span><span>On-Page SEO</span><span>Technical SEO</span><span>WooCommerce</span><span>....</span><span>Liquid</span><span>Core Web Vitals</span>
+    </div>
+</div>
+
+<!-- ABOUT + STATS -->
+<section class="about" id="about">
+    <div class="wrap about-grid">
+        <div class="about-text reveal">
+            <span class="eyebrow on-dark">About Me</span>
+            <h2 class="sec-title on-dark">Building stores that <span class="amber">load fast</span> &amp; sell more.</h2>
+            <p>I'm a <span class="hl">Shopify &amp; WordPress Developer</span> and <span class="hl">E-Commerce Specialist</span> with over 3 years of hands-on experience building custom online stores and business websites from the ground up.</p>
+            <p>My work covers Shopify (theme customization, Liquid, app integration), custom WordPress builds with .... &amp; WooCommerce, and <span class="hl">On-Page &amp; Technical SEO</span> — Core Web Vitals, XML sitemaps, and Google Search Console setup. The goal is always the same: clean UX, faster pages, and better conversions.</p>
+        </div>
+        <div class="stats reveal d2">
+            <div class="stat"><div class="num" data-count="3" data-suffix="+">0</div><div class="lbl">Years of Experience</div></div>
+            <div class="stat"><div class="num" data-count="7" data-suffix="+">0</div><div class="lbl">Websites &amp; Stores Delivered</div></div>
+            <div class="stat"><div class="num" data-count="4" data-suffix="">0</div><div class="lbl">Custom-Built Sites</div></div>
+            <div class="stat"><div class="num" data-count="97" data-suffix="%">0</div><div class="lbl">Order Accuracy Maintained</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+    <div class="wrap">
+        <div class="skills-head reveal">
+            <span class="eyebrow">What I Work With</span>
+            <h2 class="sec-title">Skills &amp; Expertise</h2>
+            <p class="sec-lead">A full toolkit for launching and growing online stores — from front-end builds to search optimization.</p>
+        </div>
+        <div class="skill-cats">
+            <div class="skill-card reveal">
+                <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>Shopify Development</h3>
+                <div class="chips">
+                    <span class="chip">Store Setup &amp; Management</span>
+                    <span class="chip">Theme Customization</span>
+                    <span class="chip">Liquid</span>
+                    <span class="chip">App Integration</span>
+                    <span class="chip">Product Upload &amp; Optimization</span>
+                    <span class="chip">Store Speed &amp; UX</span>
+                </div>
+            </div>
+            <div class="skill-card reveal d1">
+                <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>WordPress Development</h3>
+                <div class="chips">
+                    <span class="chip">Custom WordPress Builds</span>
+                    <span class="chip">....</span>
+                    <span class="chip">WooCommerce</span>
+                    <span class="chip">Responsive Design</span>
+                    <span class="chip">Plugin Configuration</span>
+                    <span class="chip">Landing Pages</span>
+                </div>
+            </div>
+            <div class="skill-card reveal d2">
+                <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>SEO — On-Page &amp; Technical</h3>
+                <div class="chips">
+                    <span class="chip">Keyword Research</span>
+                    <span class="chip">On-Page Optimization</span>
+                    <span class="chip">Technical SEO Audits</span>
+                    <span class="chip">Core Web Vitals</span>
+                    <span class="chip">XML Sitemaps</span>
+                    <span class="chip">Search Console</span>
+                    <span class="chip">Page Speed</span>
+                </div>
+            </div>
+            <div class="skill-card reveal">
+                <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>Front-End</h3>
+                <div class="chips">
+                    <span class="chip">HTML5</span>
+                    <span class="chip">CSS3</span>
+                    <span class="chip">JavaScript</span>
+                    <span class="chip">Liquid</span>
+                    <span class="chip">Debugging &amp; UI Fixes</span>
+                </div>
+            </div>
+            <div class="skill-card reveal d1">
+                <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>E-Commerce Operations</h3>
+                <div class="chips">
+                    <span class="chip">Inventory &amp; Stock Control</span>
+                    <span class="chip">Order Fulfillment</span>
+                    <span class="chip">CSV Import / Export</span>
+                    <span class="chip">Dropshipping Operations</span>
+                </div>
+            </div>
+            <div class="skill-card reveal d2">
+                <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="10" width="3" height="8"/><rect x="12" y="6" width="3" height="12"/><rect x="17" y="13" width="3" height="5"/></svg></span>Tools &amp; Data</h3>
+                <div class="chips">
+                    <span class="chip">Google Search Console</span>
+                    <span class="chip">Google Analytics</span>
+                    <span class="chip">Excel / Sheets Dashboards</span>
+                    <span class="chip">Data Reporting</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="exp" id="experience">
+    <div class="wrap exp-grid">
+        <div class="exp-head reveal">
+            <span class="eyebrow">Where I've Worked</span>
+            <h2 class="sec-title">Work Experience</h2>
+            <p class="sec-lead">Three years across US-based and international e-commerce teams — building, optimizing, and maintaining live stores.</p>
+        </div>
+        <div class="timeline reveal d1">
+            <div class="tl-item">
+                <div class="tl-role">Shopify Specialist</div>
+                <a class="tl-company" href="https://www.ecomback.com/" target="_blank" rel="noopener noreferrer">
+                    Ecomeback — USA
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </a>
+                <ul class="tl-list">
+                    <li>Shopify product listing &amp; theme customization for US stores.</li>
+                    <li>Integrated third-party apps &amp; optimized store UX for conversions.</li>
+                    <li>Built automated dashboards &amp; reports in Google Sheets.</li>
+                    <li>Managed dropshipping operations &amp; day-to-day client support.</li>
+                </ul>
+            </div>
+            <div class="tl-item">
+                <div class="tl-role">E-Commerce Specialist</div>
+                <a class="tl-company" href="https://wbminternational.com/" target="_blank" rel="noopener noreferrer">
+                    WBM International
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </a>
+                <ul class="tl-list">
+                    <li>Product uploads, stock updates &amp; order fulfillment at scale.</li>
+                    <li>Developed Excel dashboards for sales &amp; inventory tracking.</li>
+                    <li>Maintained 97%+ order accuracy across high-volume operations.</li>
+                    <li>Coordinated with international suppliers for seamless shipping.</li>
+                </ul>
+            </div>
+            <div class="tl-item">
+                <div class="tl-role">Shopify Developer</div>
+                <a class="tl-company" href="https://www.smaestimating.com/" target="_blank" rel="noopener noreferrer">
+                    SMA Estimating — USA
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </a>
+                <ul class="tl-list">
+                    <li>Uploaded &amp; optimized product listings using on-page SEO.</li>
+                    <li>Developed &amp; customized Shopify themes for improved UI/UX.</li>
+                    <li>Implemented HTML, CSS, JavaScript &amp; Shopify Liquid in live projects.</li>
+                    <li>Handled store structuring, categorization &amp; technical maintenance.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+    <div class="wrap">
+        <div class="proj-head">
+            <div class="reveal">
+                <span class="eyebrow on-dark">Selected Work</span>
+                <h2 class="sec-title on-dark">Projects &amp; Portfolio</h2>
+                <p class="sec-lead on-dark">Live stores and websites I've built and optimized. Every link is clickable — take a look.</p>
+            </div>
+            <div class="filters reveal d1" role="group" aria-label="Filter projects">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="wp">WordPress</button>
+                <button class="filter-btn" data-filter="shopify">Shopify</button>
+            </div>
+        </div>
+        <div class="proj-grid" id="projGrid">
+
+            <article class="proj-card reveal" data-cat="wp">
+                <div class="proj-top"><span class="proj-mono">W</span><span class="tag wp">WordPress</span></div>
+                <h3>WebRanko</h3>
+                <div class="url">webranko.co.uk</div>
+                <p>Custom WordPress site built with .... — responsive design, on-page SEO and optimized page performance.</p>
+                <a class="proj-link" href="https://webranko.co.uk/" target="_blank" rel="noopener noreferrer">Visit site
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </a>
+            </article>
+
+            <article class="proj-card reveal d1" data-cat="wp">
+                <div class="proj-top"><span class="proj-mono">X</span><span class="tag wp">WordPress</span></div>
+                <h3>XYUltra</h3>
+                <div class="url">xyultra.com</div>
+                <p>Custom WordPress build with a tailored layout, WooCommerce-ready structure and full on-page SEO setup.</p>
+                <a class="proj-link" href="https://xyultra.com/" target="_blank" rel="noopener noreferrer">Visit site
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </a>
+            </article>
+
+            <article class="proj-card reveal d2" data-cat="wp">
+                <div class="proj-top"><span class="proj-mono">A</span><span class="tag wp">WordPress</span></div>
+                <h3>Access Level Up</h3>
+                <div class="url">accesslevelup.com</div>
+                <p>Custom WordPress website built in .... with clean UI/UX and a solid technical SEO foundation.</p>
+                <a class="proj-link" href="https://accesslevelup.com/" target="_blank" rel="noopener noreferrer">Visit site
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </a>
+            </article>
+
+            <article class="proj-card reveal" data-cat="shopify">
+                <div class="proj-top"><span class="proj-mono">C</span><span class="tag shopify">Shopify</span></div>
+                <h3>Circ Lighting</h3>
+                <div class="url">circlighting.com</div>
+                <p>Custom Shopify store — product uploads, on-page SEO, XML sitemap submission and Google Search Console setup.</p>
+                <a class="proj-link" href="https://circlighting.com/" target="_blank" rel="noopener noreferrer">Visit site
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </a>
+            </article>
+
+            <article class="proj-card reveal d1" data-cat="shopify">
+                <div class="proj-top"><span class="proj-mono">P</span><span class="tag shopify">Shopify</span></div>
+                <h3>The Park Wholesale</h3>
+                <div class="url">theparkwholesale.com</div>
+                <p>Shopify store optimization — product uploads, SEO, theme customization and improved store structure.</p>
+                <a class="proj-link" href="https://theparkwholesale.com" target="_blank" rel="noopener noreferrer">Visit site
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </a>
+            </article>
+
+            <article class="proj-card reveal d2" data-cat="shopify">
+                <div class="proj-top"><span class="proj-mono">O</span><span class="tag shopify">Shopify</span></div>
+                <h3>Orly Beauty</h3>
+                <div class="url">orlybeauty.com</div>
+                <p>Shopify customization with product uploads, on-page SEO and third-party app integrations for a beauty brand.</p>
+                <a class="proj-link" href="https://orlybeauty.com" target="_blank" rel="noopener noreferrer">Visit site
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </a>
+            </article>
+
+            <article class="proj-card reveal" data-cat="shopify">
+                <div class="proj-top"><span class="proj-mono">A</span><span class="tag shopify">Shopify</span></div>
+                <h3>Atenai London</h3>
+                <div class="url">atenailondon.com</div>
+                <p>Shopify store customization, product organization and brand-specific improvements for a London label.</p>
+                <a class="proj-link" href="https://atenailondon.com" target="_blank" rel="noopener noreferrer">Visit site
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </a>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+    <div class="wrap">
+        <div class="skills-head reveal">
+            <span class="eyebrow">How I Can Help</span>
+            <h2 class="sec-title">Services I Deliver</h2>
+            <p class="sec-lead">End-to-end store and website work — from the first build to ongoing SEO and optimization.</p>
+        </div>
+        <div class="svc-grid">
+            <div class="svc reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><h4>Custom Shopify Store Development</h4></div>
+            <div class="svc reveal d1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h4>Custom WordPress Websites (....)</h4></div>
+            <div class="svc reveal d2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div><h4>On-Page SEO Optimization</h4></div>
+            <div class="svc reveal d3"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h4>Technical SEO Audits &amp; Fixes</h4></div>
+            <div class="svc reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div><h4>WooCommerce Setup &amp; Management</h4></div>
+            <div class="svc reveal d1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div><h4>Product Upload &amp; Optimization</h4></div>
+            <div class="svc reveal d2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h4>Page Speed &amp; Core Web Vitals</h4></div>
+            <div class="svc reveal d3"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div><h4>Search Console &amp; Sitemap Setup</h4></div>
+        </div>
+
+        <!-- EDUCATION + LANGUAGES -->
+        <div class="edu-row">
+            <div class="edu-card reveal">
+                <div class="edu-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+                <div>
+                    <h4>BS Computer Science</h4>
+                    <div class="school">The Islamia University of Bahawalpur</div>
+                </div>
+            </div>
+            <div class="lang-card reveal d1">
+                <h4><span class="d"></span>Languages</h4>
+                <div class="lang-row"><div class="top"><span>English</span><span class="pct">80%</span></div><div class="bar"><span data-w="80%"></span></div></div>
+                <div class="lang-row"><div class="top"><span>Urdu</span><span class="pct">100%</span></div><div class="bar"><span data-w="100%"></span></div></div>
+                <div class="lang-row"><div class="top"><span>Punjabi</span><span class="pct">100%</span></div><div class="bar"><span data-w="100%"></span></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+    <div class="wrap contact-inner">
+        <span class="eyebrow on-dark" style="justify-content:center">Let's Work Together</span>
+        <h2>Have a store or website<br>in mind? <span class="amber">Let's build it.</span></h2>
+        <p>Whether it's a new Shopify store, a custom WordPress site, or fixing your SEO — I'm one message away.</p>
+        <div class="contact-cta">
+            <a class="btn btn-primary" href="https://wa.me/923262122420" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.478-1.115zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.166-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                WhatsApp Me
+            </a>
+            <a class="btn btn-ghost" href="mailto:brandbalouch602@gmail.com">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                Send an Email
+            </a>
+        </div>
+        <div class="contact-meta">
+            <span class="cm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="https://wa.me/923262122420" target="_blank" rel="noopener noreferrer">+92 326 2122420</a></span>
+            <span class="cm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><a href="mailto:brandbalouch602@gmail.com">brandbalouch602@gmail.com</a></span>
+            <span class="cm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Lahore, Pakistan</span>
+        </div>
+    </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <div class="wrap foot-inner">
+        <div class="foot-brand"><span class="dot"></span>Maaz Khan</div>
+        <p>&copy; <span id="year"></span> Maaz Khan — Shopify &amp; WordPress Developer. Available for freelance projects.</p>
+        <div class="foot-social">
+            <a href="https://wa.me/923262122420" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.478-1.115zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.166-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
+            <a href="mailto:brandbalouch602@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+            <a href="https://www.linkedin.com/in/mohammad-maaz-k" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        </div>
+    </div>
+</footer>
+
+<script>
+(function(){
+    "use strict";
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /* year */
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* sticky nav */
+    var nav = document.getElementById("nav");
+    function onScroll(){ if(window.scrollY > 24){ nav.classList.add("scrolled"); } else { nav.classList.remove("scrolled"); } }
+    onScroll();
+    window.addEventListener("scroll", onScroll, {passive:true});
+
+    /* mobile menu */
+    var toggle = document.getElementById("navToggle");
+    var links = document.getElementById("navLinks");
+    toggle.addEventListener("click", function(){
+        var open = links.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    links.addEventListener("click", function(e){
+        if(e.target.tagName === "A"){ links.classList.remove("open"); toggle.setAttribute("aria-expanded","false"); }
+    });
+
+    /* scroll reveal */
+    var revs = document.querySelectorAll(".reveal");
+    if(reduce || !("IntersectionObserver" in window)){
+        revs.forEach(function(el){ el.classList.add("in"); });
+    } else {
+        var io = new IntersectionObserver(function(entries){
+            entries.forEach(function(en){
+                if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); }
+            });
+        }, {threshold:0.14, rootMargin:"0px 0px -40px 0px"});
+        revs.forEach(function(el){ io.observe(el); });
+    }
+
+    /* stat counters */
+    var counted = false;
+    var statsWrap = document.querySelector(".stats");
+    function runCounters(){
+        if(counted) return; counted = true;
+        document.querySelectorAll(".num[data-count]").forEach(function(el){
+            var target = parseFloat(el.getAttribute("data-count"));
+            var suffix = el.getAttribute("data-suffix") || "";
+            if(reduce){ el.textContent = target + suffix; return; }
+            var dur = 1300, start = null;
+            function step(ts){
+                if(!start) start = ts;
+                var p = Math.min((ts - start)/dur, 1);
+                var eased = 1 - Math.pow(1 - p, 3);
+                el.textContent = Math.round(target * eased) + suffix;
+                if(p < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        });
+    }
+    if(statsWrap){
+        if(reduce || !("IntersectionObserver" in window)){ runCounters(); }
+        else {
+            var sio = new IntersectionObserver(function(entries){
+                entries.forEach(function(en){ if(en.isIntersecting){ runCounters(); sio.disconnect(); } });
+            }, {threshold:0.4});
+            sio.observe(statsWrap);
+        }
+    }
+
+    /* language bars */
+    var langCard = document.querySelector(".lang-card");
+    function fillBars(){ document.querySelectorAll(".bar span").forEach(function(s){ s.style.width = s.getAttribute("data-w"); }); }
+    if(langCard){
+        if(reduce || !("IntersectionObserver" in window)){ fillBars(); }
+        else {
+            var lio = new IntersectionObserver(function(entries){
+                entries.forEach(function(en){ if(en.isIntersecting){ fillBars(); lio.disconnect(); } });
+            }, {threshold:0.35});
+            lio.observe(langCard);
+        }
+    }
+
+    /* project filter */
+    var fbtns = document.querySelectorAll(".filter-btn");
+    var cards = document.querySelectorAll(".proj-card");
+    fbtns.forEach(function(btn){
+        btn.addEventListener("click", function(){
+            fbtns.forEach(function(b){ b.classList.remove("active"); });
+            btn.classList.add("active");
+            var f = btn.getAttribute("data-filter");
+            cards.forEach(function(c){
+                var show = (f === "all" || c.getAttribute("data-cat") === f);
+                c.style.display = show ? "flex" : "none";
+            });
+        });
+    });
+
+    /* active nav link on scroll */
+    var sections = ["about","skills","experience","projects","services"];
+    var navAnchors = {};
+    document.querySelectorAll('.nav-links a[href^="#"]').forEach(function(a){
+        navAnchors[a.getAttribute("href").slice(1)] = a;
+    });
+    if("IntersectionObserver" in window){
+        var nio = new IntersectionObserver(function(entries){
+            entries.forEach(function(en){
+                if(en.isIntersecting){
+                    var id = en.target.id;
+                    Object.keys(navAnchors).forEach(function(k){ navAnchors[k].classList.remove("active"); });
+                    if(navAnchors[id]) navAnchors[id].classList.add("active");
+                }
+            });
+        }, {rootMargin:"-45% 0px -50% 0px"});
+        sections.forEach(function(id){ var el = document.getElementById(id); if(el) nio.observe(el); });
+    }
+})();
+</script>
+</body>
+</html>
